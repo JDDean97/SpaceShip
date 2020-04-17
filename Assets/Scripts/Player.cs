@@ -49,15 +49,20 @@ public class Player : MonoBehaviour
 
     void turn()
     {
-        float sensitivity = 2;
+        //TODO: establish pitch and roll outside function scope so we can smoothly lerp their values
+        float sensitivity = 20;
 		//set roll equal to horizontal mouse movement and multiply it by sensitivity
         float roll = -Input.GetAxis("Mouse X") * sensitivity;
 		//set roll equal to vertical mouse movement and multiply it by sensitivity
         float pitch = Input.GetAxis("Mouse Y") * sensitivity;
-		//multiply rotation by a new quaternion using previouse variables
-        transform.rotation *= Quaternion.Euler(pitch, 0, roll);
+        //multiply rotation by a new quaternion using previouse variables to establish target rotation
+        Quaternion rot = transform.rotation * Quaternion.Euler(pitch, 0, roll);
+        //smoothly interpolate current rotation towards target rotation
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, 0.2f);
 
-		//show local forward and right orientations for testing purposes
+
+        //Debug Stuff:
+        Debug.Log("pitch: " + pitch + " / roll: " + roll);
         Debug.DrawRay(transform.position, transform.forward * 10, Color.green);
         Debug.DrawRay(transform.position, transform.right * 10, Color.magenta);
     }
@@ -73,8 +78,8 @@ public class Player : MonoBehaviour
 		
 		//both of these functions are to make camera movement smoother and less stiff, it feels better trust me
 		//interpolate camera position towards ship's selfieStick at the speed of 1 + speed of ship
-        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + offset, (1 + Mathf.Abs(thrust)) * Time.deltaTime);
+        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + offset, (5 + Mathf.Abs(thrust)) * Time.deltaTime);
 		//interpolate camera rotation towards ships rotation
-        cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation,transform.rotation,1 * Time.deltaTime);
+        cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation,transform.rotation,5 * Time.deltaTime);
     }
 }
