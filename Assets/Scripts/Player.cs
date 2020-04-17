@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	
     Camera cam; //quick reference to main camera
     float thrust; //forward/backward throttle (must be outside functions)
     Rigidbody rb;//reference to attached rigidbody
