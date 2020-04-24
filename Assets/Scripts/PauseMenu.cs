@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject playerInfo;
+    public GameObject upgradeDialog;
 
     public AudioSource ambiance;    //ambient background noise
     public AudioSource engine;      //player's engine - audiosource is attached to the "ship" object
@@ -44,6 +45,10 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         playerInfo.SetActive(false);
+        if(upgradeDialog??false) 
+        {
+            upgradeDialog.SetActive(false);
+        }
         ambiance.Pause();
         engine.Pause();
         pauseUI.SetActive(true);

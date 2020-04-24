@@ -1,10 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UpgradeMenu : MonoBehaviour
 {
+	//reference to gamemanager and credits
+	public GameObject gameManager;
+	private GameManager playerUpgrades;
+
+	//reference to pause menu
+	public GameObject pauseMenu;
+	private PauseMenu pauseUI;
+
 	public GameObject upgradeDialog;
 	public GameObject upgradeMenu;
 	public GameObject playerHealth;
@@ -85,13 +95,94 @@ public class UpgradeMenu : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		playerUpgrades = gameManager.GetComponent<GameManager>();
+		pauseUI = pauseMenu.GetComponent<PauseMenu>();
+
 		upgradeDialog.SetActive(false);
 		upgradeMenu.SetActive(false);
+
+		//add listeners for upgrade menu
+        btnShield1.onClick.AddListener(delegate { Purchase(shield1); });
+        btnShield2.onClick.AddListener(delegate { Purchase(shield2); });
+        btnShield3.onClick.AddListener(delegate { Purchase(shield3); });
+        btnLaser1.onClick.AddListener(delegate { Purchase(laser1); });
+        btnLaser2.onClick.AddListener(delegate { Purchase(laser2); });
+        btnLaser3.onClick.AddListener(delegate { Purchase(laser3); });
+        btnRocket1.onClick.AddListener(delegate { Purchase(rocket1); });
+        btnRocket2.onClick.AddListener(delegate { Purchase(rocket2); });
+        btnRocket3.onClick.AddListener(delegate { Purchase(rocket3); });
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		
+		if(pauseMenu.activeSelf) 
+		{
+			upgradeDialog.SetActive(false);
+			upgradeMenu.SetActive(false);
+		}
 	}
+
+	void Purchase(int amount) 
+    {
+        if (playerUpgrades.pCredits >= amount)
+        {
+            String upgradeName = EventSystem.current.currentSelectedGameObject.name;
+            Debug.Log(upgradeName);
+
+            //determine which button was pressed to assign correct bool value
+            //currently not very efficient, but working
+            if (upgradeName == "btnShield1")
+            {
+                playerUpgrades.sUpgrade1 = true;
+                btnShield1.interactable = false;
+            }
+            else if(upgradeName == "btnShield2") 
+            {
+                playerUpgrades.sUpgrade2 = true;
+				btnShield2.interactable = false;
+            }
+            else if (upgradeName == "btnShield3")
+            {
+                playerUpgrades.sUpgrade3 = true;
+				btnShield3.interactable = false;
+            }
+            else if (upgradeName == "btnLaser1")
+            {
+                playerUpgrades.lUpgrade1 = true;
+				btnLaser1.interactable = false;
+            }
+            else if (upgradeName == "btnLaser2")
+            {
+                playerUpgrades.lUpgrade2 = true;
+				btnLaser2.interactable = false;
+            }
+            else if (upgradeName == "btnLaser3")
+            {
+                playerUpgrades.lUpgrade3 = true;
+				btnLaser3.interactable = false;
+            }
+            else if (upgradeName == "btnRocket1")
+            {
+                playerUpgrades.rUpgrade1 = true;
+				btnRocket1.interactable = false;
+            }
+            else if (upgradeName == "btnRocket2")
+            {
+                playerUpgrades.rUpgrade2 = true;
+				btnRocket2.interactable = false;
+            }
+            else if (upgradeName == "btnRocket3")
+            {
+                playerUpgrades.rUpgrade3 = true;
+				btnRocket3.interactable = false;
+            }
+            playerUpgrades.pCredits -= amount;
+            playerUpgrades.playerCredits.text = playerUpgrades.pCredits.ToString();
+        }
+        else 
+        {
+            //player does not have enough credits - display dialog window stating as such
+        }
+    }
 }
