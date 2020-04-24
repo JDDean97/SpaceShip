@@ -57,11 +57,22 @@ public class GameManager : MonoBehaviour
         rUpgrade3 = false;
         playerHealth.health = 50;
         playerShield.health = 50;
-        playerCredits.text = "64500";       //exact amount of credits to buy every upgrade
+        playerCredits.text = "22500";       //exact amount of credits to buy every upgrade
         pCredits = Convert.ToInt32(playerCredits.text);
 
         upgradeScript = satellite.GetComponent<UpgradeMenu>();
         Debug.Log(pCredits);
+
+        //add listeners for upgrade menu
+        upgradeScript.btnShield1.onClick.AddListener(delegate { Purchase(upgradeScript.shield1); });
+        upgradeScript.btnShield2.onClick.AddListener(delegate { Purchase(upgradeScript.shield2); });
+        upgradeScript.btnShield3.onClick.AddListener(delegate { Purchase(upgradeScript.shield3); });
+        upgradeScript.btnLaser1.onClick.AddListener(delegate { Purchase(upgradeScript.laser1); });
+        upgradeScript.btnLaser2.onClick.AddListener(delegate { Purchase(upgradeScript.laser2); });
+        upgradeScript.btnLaser3.onClick.AddListener(delegate { Purchase(upgradeScript.laser3); });
+        upgradeScript.btnRocket1.onClick.AddListener(delegate { Purchase(upgradeScript.rocket1); });
+        upgradeScript.btnRocket2.onClick.AddListener(delegate { Purchase(upgradeScript.rocket2); });
+        upgradeScript.btnRocket3.onClick.AddListener(delegate { Purchase(upgradeScript.rocket3); });
     }
 
     // Update is called once per frame
@@ -100,29 +111,6 @@ public class GameManager : MonoBehaviour
                 //when exiting pause menu, upgrade dialog will no longer show until player leaves trigger and re-enters -- needs fixing
                 upgradeMenu.SetActive(false);
             }
-
-            //add listener on buttons while upgrade menu is active
-            upgradeScript.btnShield1.onClick.AddListener(delegate { Purchase(upgradeScript.shield1); });
-            /*upgradeScript.btnShield2.onClick.AddListener(delegate { Purchase(upgradeScript.shield2); });
-            upgradeScript.btnShield3.onClick.AddListener(delegate { Purchase(upgradeScript.shield3); });
-            upgradeScript.btnLaser1.onClick.AddListener(delegate { Purchase(upgradeScript.laser1); });
-            upgradeScript.btnLaser2.onClick.AddListener(delegate { Purchase(upgradeScript.laser2); });
-            upgradeScript.btnLaser3.onClick.AddListener(delegate { Purchase(upgradeScript.laser3); });
-            upgradeScript.btnRocket1.onClick.AddListener(delegate { Purchase(upgradeScript.rocket1); });
-            upgradeScript.btnRocket2.onClick.AddListener(delegate { Purchase(upgradeScript.rocket2); });
-            upgradeScript.btnRocket3.onClick.AddListener(delegate { Purchase(upgradeScript.rocket3); });*/
-        }
-        else 
-        {
-            upgradeScript.btnShield1.onClick.RemoveListener(delegate { Purchase(upgradeScript.shield1); });
-            upgradeScript.btnShield2.onClick.RemoveListener(delegate { Purchase(upgradeScript.shield2); });
-            upgradeScript.btnShield3.onClick.RemoveListener(delegate { Purchase(upgradeScript.shield3); });
-            upgradeScript.btnLaser1.onClick.RemoveListener(delegate { Purchase(upgradeScript.laser1); });
-            upgradeScript.btnLaser2.onClick.RemoveListener(delegate { Purchase(upgradeScript.laser2); });
-            upgradeScript.btnLaser3.onClick.RemoveListener(delegate { Purchase(upgradeScript.laser3); });
-            upgradeScript.btnRocket1.onClick.RemoveListener(delegate { Purchase(upgradeScript.rocket1); });
-            upgradeScript.btnRocket2.onClick.RemoveListener(delegate { Purchase(upgradeScript.rocket2); });
-            upgradeScript.btnRocket3.onClick.RemoveListener(delegate { Purchase(upgradeScript.rocket3); });
         }
     }
 
@@ -130,12 +118,12 @@ public class GameManager : MonoBehaviour
     {
         if (pCredits >= amount)
         {
-            String upgradeName = EventSystem.current.currentSelectedGameObject.name; //currently now broken -- after adding in the rest of the buttons (WHICH YOU HAVE TO ADD AUTOMATIC NAVIGATION TO, TO GET THE NAME OF OBJECT) it takes all 64,500 credits away on one purchase of the tier 1 shield
+            String upgradeName = EventSystem.current.currentSelectedGameObject.name;
             Debug.Log(upgradeName);
 
             //determine which button was pressed to assign correct bool value
             //currently not very efficient, but working
-            /*if (upgradeName == "btnShield1")
+            if (upgradeName == "btnShield1")
             {
                 sUpgrade1 = true;
             }
@@ -170,7 +158,7 @@ public class GameManager : MonoBehaviour
             else if (upgradeName == "btnRocket3")
             {
                 rUpgrade3 = true;
-            }*/
+            }
             pCredits -= amount;
             playerCredits.text = pCredits.ToString();
         }
