@@ -843,6 +843,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4660556797162155634}
   - component: {fileID: 420852886003448679}
+  - component: {fileID: 63985455}
+  - component: {fileID: 63985456}
+  - component: {fileID: 63985454}
   m_Layer: 0
   m_Name: satellite
   m_TagString: Untagged
@@ -890,6 +893,70 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &63985455
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572257117333298273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 31.23
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &63985456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572257117333298273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.75, y: 29.34, z: 11.12}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &63985454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572257117333298273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c678dea111fa674f8bb86ff4a35eabb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeDialog: {fileID: 0}
+  upgradeMenu: {fileID: 0}
+  playerHealth: {fileID: 0}
+  playerShield: {fileID: 0}
+  ambiance: {fileID: 0}
+  engine: {fileID: 0}
+  upgrade: {fileID: 0}
+  btnShield1: {fileID: 0}
+  btnShield2: {fileID: 0}
+  btnShield3: {fileID: 0}
+  btnLaser1: {fileID: 0}
+  btnLaser2: {fileID: 0}
+  btnLaser3: {fileID: 0}
+  btnRocket1: {fileID: 0}
+  btnRocket2: {fileID: 0}
+  btnRocket3: {fileID: 0}
+  btnExit: {fileID: 0}
+  shield1: 500
+  shield2: 2000
+  shield3: 5000
+  laser1: 500
+  laser2: 2000
+  laser3: 5000
+  rocket1: 500
+  rocket2: 2000
+  rocket3: 5000
 --- !u!1 &8908993690841529444
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +1039,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: d9061780e69d1d548887b0f31e343db4, type: 2}
   - {fileID: -5587342449891277425, guid: 5665db7d56970874981d1a35393ccc6b, type: 3}
-  - {fileID: 8151475646875814592, guid: 5665db7d56970874981d1a35393ccc6b, type: 3}
+  - {fileID: 2100000, guid: d9061780e69d1d548887b0f31e343db4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
