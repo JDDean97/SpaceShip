@@ -13,7 +13,6 @@ public class UpgradeMenu : MonoBehaviour
 
 	//reference to pause menu
 	public GameObject pauseMenu;
-	private PauseMenu pauseUI;
 
 	public GameObject upgradeDialog;
 	public GameObject upgradeMenu;
@@ -96,7 +95,6 @@ public class UpgradeMenu : MonoBehaviour
 	void Start()
 	{
 		playerUpgrades = gameManager.GetComponent<GameManager>();
-		pauseUI = pauseMenu.GetComponent<PauseMenu>();
 
 		upgradeDialog.SetActive(false);
 		upgradeMenu.SetActive(false);

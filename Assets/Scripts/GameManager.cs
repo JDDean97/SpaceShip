@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerCredits;
     public int pCredits;
 
+    public GameObject gameOver;
+    public AudioSource gg;
     public bool isDead;
     public bool gameWon;
 
@@ -34,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOver.SetActive(false);
+
         //initialize player variables
         isDead = false;
         gameWon = false;
@@ -57,8 +61,10 @@ public class GameManager : MonoBehaviour
         //regeneration
         if (playerShield.health < playerShield.maximumHealth) 
         {
-            playerShield.healthPerSecond = 20;
+            playerShield.healthPerSecond = -20;
             playerShield.ToggleRegeneration();
+            playerHealth.healthPerSecond = -15;
+            playerHealth.ToggleRegeneration();
         }
         else
         {
@@ -77,7 +83,14 @@ public class GameManager : MonoBehaviour
             {
                 playerHealth.health = playerHealth.minimumHealth;
                 isDead = true;
+                GameOver();
             }
         }
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0f;
+        gameOver.SetActive(true);
     }
 }
