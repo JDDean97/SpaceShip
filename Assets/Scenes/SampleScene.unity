@@ -906,7 +906,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c678dea111fa674f8bb86ff4a35eabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 913497083}
   pauseMenu: {fileID: 205808668}
   upgradeDialog: {fileID: 1325372834}
   upgradeMenu: {fileID: 1352279577}
@@ -2368,7 +2367,6 @@ GameObject:
   - component: {fileID: 422167876}
   - component: {fileID: 422167875}
   - component: {fileID: 422167877}
-  - component: {fileID: 422167878}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -2528,23 +2526,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &422167878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422167873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 913497083}
-  pauseMenu: {fileID: 205808668}
-  ambiance: {fileID: 1579632707}
-  engine: {fileID: 36152532}
-  gg: {fileID: 422167877}
 --- !u!1 &470845479
 GameObject:
   m_ObjectHideFlags: 0
@@ -5332,6 +5313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 913497085}
   - component: {fileID: 913497084}
+  - component: {fileID: 913497086}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -5380,6 +5362,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913497086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913497083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 205808668}
+  gameOver: {fileID: 422167873}
+  playerStats: {fileID: 1266674372}
+  ambiance: {fileID: 1579632707}
+  engine: {fileID: 36152532}
+  gg: {fileID: 422167877}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

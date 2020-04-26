@@ -7,10 +7,6 @@ using UnityEngine.EventSystems;
 
 public class UpgradeMenu : MonoBehaviour
 {
-	//reference to gamemanager and credits
-	public GameObject gameManager;
-	private GameManager playerUpgrades;
-
 	//reference to pause menu
 	public GameObject pauseMenu;
 
@@ -94,8 +90,6 @@ public class UpgradeMenu : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		playerUpgrades = gameManager.GetComponent<GameManager>();
-
 		upgradeDialog.SetActive(false);
 		upgradeMenu.SetActive(false);
 
@@ -123,7 +117,7 @@ public class UpgradeMenu : MonoBehaviour
 
 	void Purchase(int amount)
 	{
-		if (playerUpgrades.pCredits >= amount)
+		if (GameManager.Instance.pCredits >= amount)
 		{
 			String upgradeName = EventSystem.current.currentSelectedGameObject.name;
 			Debug.Log(upgradeName);
@@ -132,51 +126,51 @@ public class UpgradeMenu : MonoBehaviour
 			//currently not very efficient, but working
 			if (upgradeName == "btnShield1")
 			{
-				playerUpgrades.sUpgrade1 = true;
+				GameManager.Instance.sUpgrade1 = true;
 				btnShield1.interactable = false;
 			}
 			else if (upgradeName == "btnShield2")
 			{
-				playerUpgrades.sUpgrade2 = true;
+				GameManager.Instance.sUpgrade2 = true;
 				btnShield2.interactable = false;
 			}
 			else if (upgradeName == "btnShield3")
 			{
-				playerUpgrades.sUpgrade3 = true;
+				GameManager.Instance.sUpgrade3 = true;
 				btnShield3.interactable = false;
 			}
 			else if (upgradeName == "btnLaser1")
 			{
-				playerUpgrades.lUpgrade1 = true;
+				GameManager.Instance.lUpgrade1 = true;
 				btnLaser1.interactable = false;
 			}
 			else if (upgradeName == "btnLaser2")
 			{
-				playerUpgrades.lUpgrade2 = true;
+				GameManager.Instance.lUpgrade2 = true;
 				btnLaser2.interactable = false;
 			}
 			else if (upgradeName == "btnLaser3")
 			{
-				playerUpgrades.lUpgrade3 = true;
+				GameManager.Instance.lUpgrade3 = true;
 				btnLaser3.interactable = false;
 			}
 			else if (upgradeName == "btnRocket1")
 			{
-				playerUpgrades.rUpgrade1 = true;
+				GameManager.Instance.rUpgrade1 = true;
 				btnRocket1.interactable = false;
 			}
 			else if (upgradeName == "btnRocket2")
 			{
-				playerUpgrades.rUpgrade2 = true;
+				GameManager.Instance.rUpgrade2 = true;
 				btnRocket2.interactable = false;
 			}
 			else if (upgradeName == "btnRocket3")
 			{
-				playerUpgrades.rUpgrade3 = true;
+				GameManager.Instance.rUpgrade3 = true;
 				btnRocket3.interactable = false;
 			}
-			playerUpgrades.pCredits -= amount;
-			playerUpgrades.playerCredits.text = playerUpgrades.pCredits.ToString();
+			GameManager.Instance.pCredits -= amount;
+			GameManager.Instance.playerCredits.text = GameManager.Instance.pCredits.ToString();
 		}
 		else
 		{
