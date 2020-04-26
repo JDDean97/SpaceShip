@@ -9,23 +9,16 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     //player stats UI
     public Healthbar playerHealth;      //how to properly retrieve the downloaded healthbar asset for use
     public Healthbar playerShield;
     public TextMeshProUGUI playerCredits;
-    private int pCredits;
+    public int pCredits;
 
-    //pause menu UI
-    public GameObject pauseMenu;
-
-    //upgrade menu UI
-    public GameObject upgradeDialog;
-    public GameObject upgradeMenu;
-
-    //satellite where UpgradeMenu script is attached
-    public GameObject satellite;
-    private UpgradeMenu upgradeScript;
-
+    //public GameObject gameOver;
+    //public AudioSource gg;
     public bool isDead;
     public bool gameWon;
 
@@ -43,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //gameOver.SetActive(false);
+
         //initialize player variables
         isDead = false;
         gameWon = false;
@@ -59,29 +54,18 @@ public class GameManager : MonoBehaviour
         playerShield.health = 50;
         playerCredits.text = "22500";       //exact amount of credits to buy every upgrade
         pCredits = Convert.ToInt32(playerCredits.text);
-
-        upgradeScript = satellite.GetComponent<UpgradeMenu>();
-        Debug.Log(pCredits);
-
-        //add listeners for upgrade menu
-        upgradeScript.btnShield1.onClick.AddListener(delegate { Purchase(upgradeScript.shield1); });
-        upgradeScript.btnShield2.onClick.AddListener(delegate { Purchase(upgradeScript.shield2); });
-        upgradeScript.btnShield3.onClick.AddListener(delegate { Purchase(upgradeScript.shield3); });
-        upgradeScript.btnLaser1.onClick.AddListener(delegate { Purchase(upgradeScript.laser1); });
-        upgradeScript.btnLaser2.onClick.AddListener(delegate { Purchase(upgradeScript.laser2); });
-        upgradeScript.btnLaser3.onClick.AddListener(delegate { Purchase(upgradeScript.laser3); });
-        upgradeScript.btnRocket1.onClick.AddListener(delegate { Purchase(upgradeScript.rocket1); });
-        upgradeScript.btnRocket2.onClick.AddListener(delegate { Purchase(upgradeScript.rocket2); });
-        upgradeScript.btnRocket3.onClick.AddListener(delegate { Purchase(upgradeScript.rocket3); });
     }
 
     // Update is called once per frame
-    void Update() {
-        //regeneration
+    void Update()
+    {
+        /*//regeneration
         if (playerShield.health < playerShield.maximumHealth) 
         {
-            playerShield.healthPerSecond = 20;
+            playerShield.healthPerSecond = -20;
             playerShield.ToggleRegeneration();
+            playerHealth.healthPerSecond = -15;
+            playerHealth.ToggleRegeneration();
         }
         else
         {
@@ -100,71 +84,14 @@ public class GameManager : MonoBehaviour
             {
                 playerHealth.health = playerHealth.minimumHealth;
                 isDead = true;
+                GameOver();
             }
-        }
-
-        if (upgradeMenu.activeSelf)
-        {
-            //checking for upgrade to pause menu bug
-            if (pauseMenu.activeSelf)
-            {
-                //when exiting pause menu, upgrade dialog will no longer show until player leaves trigger and re-enters -- needs fixing
-                upgradeMenu.SetActive(false);
-            }
-        }
+        }*/
     }
 
-    void Purchase(int amount) 
+    /*void GameOver()
     {
-        if (pCredits >= amount)
-        {
-            String upgradeName = EventSystem.current.currentSelectedGameObject.name;
-            Debug.Log(upgradeName);
-
-            //determine which button was pressed to assign correct bool value
-            //currently not very efficient, but working
-            if (upgradeName == "btnShield1")
-            {
-                sUpgrade1 = true;
-            }
-            else if(upgradeName == "btnShield2") 
-            {
-                sUpgrade2 = true;
-            }
-            else if (upgradeName == "btnShield3")
-            {
-                sUpgrade3 = true;
-            }
-            else if (upgradeName == "btnLaser1")
-            {
-                lUpgrade1 = true;
-            }
-            else if (upgradeName == "btnLaser2")
-            {
-                lUpgrade2 = true;
-            }
-            else if (upgradeName == "btnLaser3")
-            {
-                lUpgrade3 = true;
-            }
-            else if (upgradeName == "btnRocket1")
-            {
-                rUpgrade1 = true;
-            }
-            else if (upgradeName == "btnRocket2")
-            {
-                rUpgrade2 = true;
-            }
-            else if (upgradeName == "btnRocket3")
-            {
-                rUpgrade3 = true;
-            }
-            pCredits -= amount;
-            playerCredits.text = pCredits.ToString();
-        }
-        else 
-        {
-            //player does not have enough credits - display dialog window stating as such
-        }
-    }
+        Time.timeScale = 0f;
+        gameOver.SetActive(true);
+    }*/
 }
