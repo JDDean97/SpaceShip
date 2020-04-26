@@ -71,10 +71,8 @@ public class GameManager : MonoBehaviour
         //regeneration
         if (playerShield.health < playerShield.maximumHealth) 
         {
-            playerShield.healthPerSecond = -20;
+            playerShield.healthPerSecond = 20;
             playerShield.ToggleRegeneration();
-            playerHealth.healthPerSecond = -15;
-            playerHealth.ToggleRegeneration();
         }
         else
         {
