@@ -23,11 +23,11 @@ public class Healthbar : MonoBehaviour {
     [Tooltip("Maximum possible heath: (default is 100)")] public float maximumHealth = 100;
 
     // If the character has this health or less, consider them having low health:
-    [Tooltip("Low health is less than or equal to this:")] public int lowHealth = 33;
+    [Tooltip("Low health is less than or equal to this:")] public int lowHealth = 30;
 
     // If the character has between this health and "low health", consider them having medium health:
     // If they have more than this health, consider them having highHealth:
-    [Tooltip("High health is greater than or equal to this:")] public int highHealth = 66;
+    [Tooltip("High health is greater than or equal to this:")] public int highHealth = 60;
 
     [Space]
 
@@ -39,9 +39,9 @@ public class Healthbar : MonoBehaviour {
     [Space]
 
     [Header("Healthbar Colors:")]
-    public Color highHealthColor = new Color(0.35f, 1f, 0.35f);
-    public Color mediumHealthColor = new Color(0.9450285f, 1f, 0.4481132f);
-    public Color lowHealthColor = new Color(1f, 0.259434f, 0.259434f);
+    public Color highHealthColor = new Color(0f, 1f, 0.08463907f);
+    public Color mediumHealthColor = new Color(0.9208024f, 1f, 0f);
+    public Color lowHealthColor = new Color(1f, 0f, 0.02821732f);
 
     private void Start()
     {
