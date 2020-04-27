@@ -63,7 +63,6 @@
      <Compile Include="Assets\Scripts\ParticleDespawn.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\ShootObject.cs" />
      <Compile Include="Assets\Scripts\UpgradeMenu.cs" />
      <Compile Include="Assets\Scripts\enemy.cs" />
      <Compile Include="Assets\Scripts\fireWeapon.cs" />

@@ -44,6 +44,7 @@ public class Missile : MonoBehaviour {
         Timer += Time.deltaTime;
 		//destroy if missile's time is up
 		if (Timer > TimeTillExpire){
+            Debug.Log("Rocket destroyed because of time till expire");
 			Die = true;
 		}
 		
@@ -59,17 +60,13 @@ public class Missile : MonoBehaviour {
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * LookSpeed);
             }
         }
-        else {
-            //dies if timer runs out
-            //Destroy(gameObject);
-            Die = true;
-        }
 
 		//set up instances that the missile will die...
         //if all enemies are too far away
 		if (CalculatedDistance > DistanceTillStopLooking){
 			stopTurning = true;
             //Destroy(gameObject);
+            Debug.Log("Rocket destroyed because of distance till stop looking");
             Die = true;
         }
 		if (Die == true){
@@ -85,7 +82,8 @@ public class Missile : MonoBehaviour {
         {
             enemyhit.TakeDamage(missileDamage);
         }
-       // Destroy(gameObject);
+        // Destroy(gameObject);
+        Debug.Log("Rocket destroyed because of collision with enemy");
         Die = true;
 	}
 
