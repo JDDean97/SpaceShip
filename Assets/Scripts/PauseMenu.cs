@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject playerInfo;
+    public GameObject gameOver;
 
     public AudioSource ambiance;    //ambient background noise
     public AudioSource engine;      //player's engine - audiosource is attached to the "ship" object
@@ -51,8 +52,14 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    public void Restart()
+    {
+        Destroy(GameManager.Instance);
+        SceneManager.LoadSceneAsync(1);
+    }
+
     public void Quit() {
-        pauseUI.SetActive(false);
+        Destroy(GameManager.Instance);
         SceneManager.LoadSceneAsync(0);
     }
 }

@@ -12,12 +12,15 @@ public class UpgradeMenu : MonoBehaviour
 
 	public GameObject upgradeDialog;
 	public GameObject upgradeMenu;
+	public GameObject insufficientCredits;
 	public GameObject playerHealth;
 	public GameObject playerShield;
 
 	public AudioSource ambiance;    //ambient background noise
 	public AudioSource engine;      //player's engine - audiosource is attached to the "ship" object
 	public AudioSource upgrade;     //audio for upgrade menu
+	public AudioSource purchaseSuccess;
+	public AudioSource purchaseFail;
 
 	//upgrade menu buttons
 	public Button btnShield1;
@@ -30,6 +33,7 @@ public class UpgradeMenu : MonoBehaviour
 	public Button btnRocket2;
 	public Button btnRocket3;
 	public Button btnExit;
+	public Button btnOK;
 
 	//upgrade costs
 	public int shield1 = 500;
@@ -90,6 +94,7 @@ public class UpgradeMenu : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		insufficientCredits.SetActive(false);
 		upgradeDialog.SetActive(false);
 		upgradeMenu.SetActive(false);
 
@@ -103,6 +108,7 @@ public class UpgradeMenu : MonoBehaviour
 		btnRocket1.onClick.AddListener(delegate { Purchase(rocket1); });
 		btnRocket2.onClick.AddListener(delegate { Purchase(rocket2); });
 		btnRocket3.onClick.AddListener(delegate { Purchase(rocket3); });
+		btnOK.onClick.AddListener(NotEnoughCred);
 	}
 
 	// Update is called once per frame
@@ -119,6 +125,8 @@ public class UpgradeMenu : MonoBehaviour
 	{
 		if (GameManager.Instance.pCredits >= amount)
 		{
+			purchaseSuccess.Play();
+
 			String upgradeName = EventSystem.current.currentSelectedGameObject.name;
 			Debug.Log(upgradeName);
 
@@ -175,6 +183,13 @@ public class UpgradeMenu : MonoBehaviour
 		else
 		{
 			//player does not have enough credits - display dialog window stating as such
+			purchaseFail.Play();
+			insufficientCredits.SetActive(true);
 		}
 	}
+
+	void NotEnoughCred()
+    {
+		insufficientCredits.SetActive(false);
+    }
 }

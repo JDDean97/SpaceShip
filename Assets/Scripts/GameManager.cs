@@ -45,8 +45,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        //Instance = this;
         //initialize player variables
         isDead = false;
         gameWon = false;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         rUpgrade3 = false;
         playerHealth.health = 50;
         playerShield.health = 50;
-        playerCredits.text = "22500";       //exact amount of credits to buy every upgrade
+        playerCredits.text = "500";       //exact amount of credits to buy every upgrade
         pCredits = Convert.ToInt32(playerCredits.text);
     }
 
@@ -71,8 +72,10 @@ public class GameManager : MonoBehaviour
         //regeneration
         if (playerShield.health < playerShield.maximumHealth) 
         {
-            playerShield.healthPerSecond = 20;
+            playerShield.healthPerSecond = -20;
             playerShield.ToggleRegeneration();
+            playerHealth.healthPerSecond = -15;
+            playerHealth.ToggleRegeneration();
         }
         else
         {
