@@ -20,16 +20,16 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Upgrade"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("UpgradeScene"))
         {
             if (levelsComplete == 0) {
-                SceneManager.LoadSceneAsync("wave1");
+                SceneManager.LoadSceneAsync("Wave1");
             }
             else if(levelsComplete == 1) {
-                SceneManager.LoadSceneAsync("wave2");
+                SceneManager.LoadSceneAsync("Wave2");
             }
             else if (levelsComplete == 2){
-                SceneManager.LoadSceneAsync("wave3");
+                SceneManager.LoadSceneAsync("Wave3");
             }
             else if (levelsComplete == 3){
                 SceneManager.LoadSceneAsync("Boss");
@@ -39,7 +39,7 @@ public class Portal : MonoBehaviour
         {
             if(GameManager.Instance.waveComplete)
             {
-                SceneManager.LoadSceneAsync("Upgrade");
+                SceneManager.LoadSceneAsync("UpgradeScene");
             }
         }
     }

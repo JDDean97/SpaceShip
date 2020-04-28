@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         //initialize player variables
         isDead = false;
         gameWon = false;
@@ -115,6 +118,4 @@ public class GameManager : MonoBehaviour
             missileLimit = 2;
         }
     }
-
-
 }
