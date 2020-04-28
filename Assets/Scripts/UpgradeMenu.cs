@@ -66,6 +66,9 @@ public class UpgradeMenu : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.E))
 			{
+				//make cursor visible
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.None;
 				upgradeDialog.SetActive(false);
 				playerHealth.SetActive(false);
 				playerShield.SetActive(false);
@@ -81,6 +84,8 @@ public class UpgradeMenu : MonoBehaviour
 
 	void ExitUpgrade()
 	{
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
 		upgrade.Pause();
 		upgradeMenu.SetActive(false);
 		playerHealth.SetActive(true);

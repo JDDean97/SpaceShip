@@ -19,6 +19,8 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         gameOver.SetActive(false);
     }
 
@@ -33,6 +35,8 @@ public class GameOver : MonoBehaviour
 
     void playerDead()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         gameOver.SetActive(true);
         pauseMenu.SetActive(false);

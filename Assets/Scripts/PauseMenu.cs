@@ -34,6 +34,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         playerInfo.SetActive(true);
         ambiance.Play();
         engine.Play();
@@ -44,6 +46,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         playerInfo.SetActive(false);
         ambiance.Pause();
         engine.Pause();

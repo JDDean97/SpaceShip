@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        //Instance = this;
+        //hide cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         //initialize player variables
         isDead = false;
         gameWon = false;
