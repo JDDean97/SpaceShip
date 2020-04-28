@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5268aa1578e1e5f4a87ee0cc26a4358f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 36152534}
+  laser: {fileID: 1382161416}
   ship: {fileID: 9164405876904195294}
   TargetPos: {fileID: 0}
   missile: {fileID: 6551372900498511741, guid: cb6fe86559b664f4c9eb1a357a991146, type: 3}
@@ -837,12 +837,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!120 &36152534 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 2003149596161903179, guid: 282141351cdf8254e9f8aa2f6c8ea066,
-    type: 3}
-  m_PrefabInstance: {fileID: 9164405876904195293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &63092799
 GameObject:
   m_ObjectHideFlags: 0
@@ -7404,6 +7398,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!120 &1382161416 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 6381115571237081885, guid: 282141351cdf8254e9f8aa2f6c8ea066,
+    type: 3}
+  m_PrefabInstance: {fileID: 9164405876904195293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1391799179 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1564376996249210, guid: d16a19242f7da6d4794facdc63b9c915,
@@ -11615,6 +11615,11 @@ PrefabInstance:
       propertyPath: engine
       value: 
       objectReference: {fileID: 36152532}
+    - target: {fileID: 2003149596161903179, guid: 282141351cdf8254e9f8aa2f6c8ea066,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2113139133554050571, guid: 282141351cdf8254e9f8aa2f6c8ea066,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11700,7 +11705,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 4.11
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6381115571237081885, guid: 282141351cdf8254e9f8aa2f6c8ea066,
+        type: 3}
+      propertyPath: m_UseWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6381115571237081885, guid: 282141351cdf8254e9f8aa2f6c8ea066,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d2e1b4c2278836439275b9d968c6b0b, type: 2}
+    m_RemovedComponents:
+    - {fileID: 2003149596161903179, guid: 282141351cdf8254e9f8aa2f6c8ea066, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 282141351cdf8254e9f8aa2f6c8ea066, type: 3}
 --- !u!1 &9164405876904195294 stripped
 GameObject:
