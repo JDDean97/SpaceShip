@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Missile : MonoBehaviour {
+public class Missile : MonoBehaviour
+{
 
-	public float Speed = 40;
-	public int LookSpeed = 10;
-	public float TimeTillTrack=0;
-	public float Timer;
-	public float DistanceTillStopLooking;
-	public float CalculatedDistance;
-	public Vector3 Target;
-	public Quaternion targetRotation;
-	public GameObject FoundTargetObject;
-	//public GameObject Explosion;
-	public bool stopTurning;
-	public int TimeTillExpire;
-	public bool Die;
+    public float Speed = 40;
+    public int LookSpeed = 10;
+    public float TimeTillTrack = 0;
+    public float Timer;
+    public float DistanceTillStopLooking;
+    public float CalculatedDistance;
+    public Vector3 Target;
+    public Quaternion targetRotation;
+    public GameObject FoundTargetObject;
+    public GameObject Explosion;
+    public bool stopTurning;
+    public int TimeTillExpire;
+    public bool Die;
     public int missileDamage = 50;
 
-    void Start (){
+    void Start()
+    {
         //Find the target object
         FoundTargetObject = FindClosestEnemy();
         if (FoundTargetObject != null)
@@ -27,8 +29,11 @@ public class Missile : MonoBehaviour {
         }
 
     }
-	
-	void Update (){
+
+    void Update()
+    {
+        //pulling values from Gamemanager
+        missileDamage = GameManager.Instance.missileDamage;
 
         //Find the closest target object
         FoundTargetObject = FindClosestEnemy();
@@ -36,20 +41,21 @@ public class Missile : MonoBehaviour {
         {
             Target = FoundTargetObject.transform.position;
         }
-       
+
         //find the distance from missile to target
         CalculatedDistance = Vector3.Distance(gameObject.transform.position, Target);
 
         //set up the timer
         Timer += Time.deltaTime;
-		//destroy if missile's time is up
-		if (Timer > TimeTillExpire){
-            Debug.Log("Rocket destroyed because of time till expire");
-			Die = true;
-		}
-		
-		//give the missile speed
-		transform.Translate(0,0,Speed/100);
+        //destroy if missile's time is up
+        if (Timer > TimeTillExpire)
+        {
+            Die = true;
+            Debug.Log("life timer");
+        }
+
+        //give the missile speed
+        transform.Translate(0, 0, Speed / 100);
         //delay tracking for a certain amount of time...
         if (Timer > TimeTillTrack)
         {
@@ -61,34 +67,40 @@ public class Missile : MonoBehaviour {
             }
         }
 
-		//set up instances that the missile will die...
+
+        //set up instances that the missile will die...
         //if all enemies are too far away
-		if (CalculatedDistance > DistanceTillStopLooking){
-			stopTurning = true;
+        if (CalculatedDistance > DistanceTillStopLooking)
+        {
+            stopTurning = true;
             //Destroy(gameObject);
-            Debug.Log("Rocket destroyed because of distance till stop looking");
             Die = true;
+            Debug.Log("distance death");
         }
-		if (Die == true){
-			//Instantiate(Explosion, transform.position, transform.rotation);
-	    	Destroy(gameObject);
-		}
-	}
-	void OnTriggerEnter (Collider other){
-        
+        if (Die == true)
+        {
+            Instantiate(Explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+
         enemy enemyhit = other.gameObject.GetComponent<enemy>();
-       
+
         if (enemyhit != null)
         {
             enemyhit.TakeDamage(missileDamage);
+            Debug.Log("damage given");
         }
+        Debug.Log("impact");
         // Destroy(gameObject);
-        Debug.Log("Rocket destroyed because of collision with enemy");
         Die = true;
-	}
+    }
 
     //sorts through array of enemies until it finds the closest one
-    public GameObject FindClosestEnemy(){
+    public GameObject FindClosestEnemy()
+    {
         GameObject[] allEnemies;
         allEnemies = GameObject.FindGameObjectsWithTag("enemy");
         GameObject closest = null;

@@ -116,6 +116,7 @@ MonoBehaviour:
   Target: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   FoundTargetObject: {fileID: 0}
+  Explosion: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
   stopTurning: 0
   TimeTillExpire: 60
   Die: 0

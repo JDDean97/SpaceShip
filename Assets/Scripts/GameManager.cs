@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public Healthbar playerShield;
     public TextMeshProUGUI playerCredits;
     public int pCredits;
+    public int levelsComplete;
+    public bool waveComplete;
 
     public bool isDead;
     public bool gameWon;
@@ -31,9 +33,16 @@ public class GameManager : MonoBehaviour
     public bool rUpgrade2;
     public bool rUpgrade3;
 
+    //values to upgrade
+    public int missileRange = 50;
+    public int missileDamage = 50;
+    public int missileLimit = 1;
+    public int laserRange = 50;
+    public int laserDamage = 50;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             DontDestroyOnLoad(this);
             Instance = this;
@@ -45,11 +54,8 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
-        //hide cursor
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         //initialize player variables
         isDead = false;
         gameWon = false;
@@ -64,22 +70,27 @@ public class GameManager : MonoBehaviour
         rUpgrade3 = false;
         playerHealth.health = 50;
         playerShield.health = 50;
-        playerCredits.text = "500";       //exact amount of credits to buy every upgrade
+        playerCredits.text = "22500";       //exact amount of credits to buy every upgrade
         pCredits = Convert.ToInt32(playerCredits.text);
+        missileRange = 50;
+        missileDamage = 50;
+        missileLimit = 1;
+        laserRange = 50;
+        laserDamage = 50;
     }
 
     // Update is called once per frame
     void Update()
     {
         //regeneration
-        if (playerShield.health < playerShield.maximumHealth) 
+        if (playerShield.health < playerShield.maximumHealth)
         {
-            playerShield.healthPerSecond = 10;
+            playerShield.healthPerSecond = 20;
             playerShield.ToggleRegeneration();
         }
         else
         {
-            if (playerHealth.health < playerHealth.maximumHealth) 
+            if (playerHealth.health < playerHealth.maximumHealth)
             {
                 playerHealth.healthPerSecond = 5;
                 playerHealth.ToggleRegeneration();
@@ -90,11 +101,20 @@ public class GameManager : MonoBehaviour
         if (playerShield.health <= playerShield.minimumHealth)
         {
             playerShield.health = playerShield.minimumHealth;
-            if (playerHealth.health <= playerHealth.minimumHealth) 
+            if (playerHealth.health <= playerHealth.minimumHealth)
             {
                 playerHealth.health = playerHealth.minimumHealth;
                 isDead = true;
             }
         }
+
+        if (rUpgrade1 == true)
+        {
+            missileRange = 80;
+            missileDamage = 75;
+            missileLimit = 2;
+        }
     }
+
+
 }
