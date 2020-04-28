@@ -77,6 +77,18 @@ public class UpgradeMenu : MonoBehaviour
 				Time.timeScale = 0f;
 				upgradeMenu.SetActive(true);
 				upgrade.Play();
+
+				//add listeners for upgrade menu
+				btnShield1.onClick.AddListener(delegate { Purchase(shield1); });
+				btnShield2.onClick.AddListener(delegate { Purchase(shield2); });
+				btnShield3.onClick.AddListener(delegate { Purchase(shield3); });
+				btnLaser1.onClick.AddListener(delegate { Purchase(laser1); });
+				btnLaser2.onClick.AddListener(delegate { Purchase(laser2); });
+				btnLaser3.onClick.AddListener(delegate { Purchase(laser3); });
+				btnRocket1.onClick.AddListener(delegate { Purchase(rocket1); });
+				btnRocket2.onClick.AddListener(delegate { Purchase(rocket2); });
+				btnRocket3.onClick.AddListener(delegate { Purchase(rocket3); });
+				btnOK.onClick.AddListener(NotEnoughCred);
 				btnExit.onClick.AddListener(ExitUpgrade);
 			}
 		}
@@ -102,18 +114,6 @@ public class UpgradeMenu : MonoBehaviour
 		insufficientCredits.SetActive(false);
 		upgradeDialog.SetActive(false);
 		upgradeMenu.SetActive(false);
-
-		//add listeners for upgrade menu
-		btnShield1.onClick.AddListener(delegate { Purchase(shield1); });
-		btnShield2.onClick.AddListener(delegate { Purchase(shield2); });
-		btnShield3.onClick.AddListener(delegate { Purchase(shield3); });
-		btnLaser1.onClick.AddListener(delegate { Purchase(laser1); });
-		btnLaser2.onClick.AddListener(delegate { Purchase(laser2); });
-		btnLaser3.onClick.AddListener(delegate { Purchase(laser3); });
-		btnRocket1.onClick.AddListener(delegate { Purchase(rocket1); });
-		btnRocket2.onClick.AddListener(delegate { Purchase(rocket2); });
-		btnRocket3.onClick.AddListener(delegate { Purchase(rocket3); });
-		btnOK.onClick.AddListener(NotEnoughCred);
 	}
 
 	// Update is called once per frame

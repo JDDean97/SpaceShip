@@ -936,17 +936,17 @@ MonoBehaviour:
   upgrade: {fileID: 1352279581}
   purchaseSuccess: {fileID: 473260689}
   purchaseFail: {fileID: 1942130880}
-  btnShield1: {fileID: 544697104}
-  btnShield2: {fileID: 2044607181}
-  btnShield3: {fileID: 782022824}
-  btnLaser1: {fileID: 78644470}
-  btnLaser2: {fileID: 135288249}
-  btnLaser3: {fileID: 583170443}
-  btnRocket1: {fileID: 564034487}
-  btnRocket2: {fileID: 1044447311}
-  btnRocket3: {fileID: 1798669840}
-  btnExit: {fileID: 473491547}
-  btnOK: {fileID: 245141589}
+  btnShield1: {fileID: 0}
+  btnShield2: {fileID: 0}
+  btnShield3: {fileID: 0}
+  btnLaser1: {fileID: 0}
+  btnLaser2: {fileID: 0}
+  btnLaser3: {fileID: 0}
+  btnRocket1: {fileID: 0}
+  btnRocket2: {fileID: 0}
+  btnRocket3: {fileID: 0}
+  btnExit: {fileID: 0}
+  btnOK: {fileID: 0}
   shield1: 500
   shield2: 2000
   shield3: 5000
@@ -6767,7 +6767,7 @@ PrefabInstance:
     - target: {fileID: 63985454, guid: 7c2905953eb72fe44a481bce94c956f0, type: 3}
       propertyPath: upgrade
       value: 
-      objectReference: {fileID: 205808672}
+      objectReference: {fileID: 1352279581}
     - target: {fileID: 63985454, guid: 7c2905953eb72fe44a481bce94c956f0, type: 3}
       propertyPath: purchaseSuccess
       value: 
