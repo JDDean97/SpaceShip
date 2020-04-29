@@ -15,7 +15,6 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        damageTaken = true;
         shield.health = GameManager.Instance.shield;
         shield.maximumHealth = 200;
         health.health = GameManager.Instance.health;
