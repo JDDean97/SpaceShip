@@ -1100,11 +1100,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss
       objectReference: {fileID: 0}
-    - target: {fileID: 4582990095312756576, guid: 82bc1c70059f1374ca8a394aa2765cf6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82bc1c70059f1374ca8a394aa2765cf6, type: 3}
 --- !u!1 &113101584
@@ -2419,7 +2414,7 @@ PrefabInstance:
     - target: {fileID: 3937055193374965685, guid: f68715b95b3a1e441a9559a9a49ceea4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}

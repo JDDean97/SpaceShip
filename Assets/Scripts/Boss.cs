@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     public int health;
     public GameObject explosion;
     public GameObject minion;
+    float spawnTimer = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,16 @@ public class Boss : MonoBehaviour
         patrol();
         move();
         turn();
-        deploy();
+    }
+
+    private void Update()
+    {
+        spawnTimer -= 1 * Time.deltaTime;
+        if(spawnTimer<=0)
+        {
+            deploy();
+            spawnTimer = 4;
+        }
     }
 
     void patrol()
@@ -60,7 +70,18 @@ public class Boss : MonoBehaviour
 
     void deploy()
     {
-
+        float maxEnemies = 5;
+        enemy[] enemies = FindObjectsOfType<enemy>();
+        if(enemies.Length < maxEnemies)
+        {
+            //spawn enemy in front of ship
+            GameObject newEnemy = Instantiate(minion, transform.position + transform.forward, transform.rotation);
+            Physics.IgnoreCollision(newEnemy.GetComponent<Collider>(), GetComponent<Collider>());
+            foreach (enemy e in enemies)
+            {
+                Physics.IgnoreCollision(e.GetComponent<Collider>(), GetComponent<Collider>());
+            }            
+        }
     }
 
     void move()
