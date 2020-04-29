@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject lasers;
     public GameObject pauseUI;
     public GameObject playerInfo;
     public GameObject gameOver;
@@ -36,6 +37,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        lasers.SetActive(true);
         playerInfo.SetActive(true);
         ambiance.Play();
         engine.Play();
@@ -48,6 +50,7 @@ public class PauseMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        lasers.SetActive(false);
         playerInfo.SetActive(false);
         ambiance.Pause();
         engine.Pause();
