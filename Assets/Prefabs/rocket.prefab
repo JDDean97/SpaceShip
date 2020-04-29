@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 7831899569603700078}
   - component: {fileID: 1291259406612979544}
   - component: {fileID: 4816583298208211873}
+  - component: {fileID: 8867727509463265647}
+  - component: {fileID: -5345291547744232769}
   m_Layer: 0
   m_Name: rocket
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,3 +81,43 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &8867727509463265647
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551372900498511741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01895648
+  m_Height: 0.02113772
+  m_Direction: 1
+  m_Center: {x: -4.656613e-10, y: -0.0000000055879354, z: 0.004081903}
+--- !u!114 &-5345291547744232769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551372900498511741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d69fd9cc23fe441a87e66e1dee6979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 40
+  LookSpeed: 10
+  TimeTillTrack: 0
+  Timer: 0
+  DistanceTillStopLooking: 150
+  CalculatedDistance: 0
+  Target: {x: 0, y: 0, z: 0}
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  FoundTargetObject: {fileID: 0}
+  Explosion: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
+  stopTurning: 0
+  TimeTillExpire: 60
+  Die: 0
+  missileDamage: 50
