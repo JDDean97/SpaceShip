@@ -3301,7 +3301,10 @@ GameObject:
   - component: {fileID: 1279358083}
   - component: {fileID: 1279358082}
   - component: {fileID: 1279358081}
+  - component: {fileID: 1279358087}
   - component: {fileID: 1279358080}
+  - component: {fileID: 1279358085}
+  - component: {fileID: 1279358086}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3410,6 +3413,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1279358085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279358079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 2116671174}
+  gameOver: {fileID: 428203506}
+  playerStats: {fileID: 580585111}
+  ambiance: {fileID: 1794743898}
+  engine: {fileID: 2101919869}
+  gg: {fileID: 428203508}
+--- !u!114 &1279358086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279358079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47b30d3abc5e964caaf55a11726c8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winUI: {fileID: 557946974}
+  pauseUI: {fileID: 2116671174}
+  gameOverUI: {fileID: 428203506}
+  playerStats: {fileID: 580585111}
+--- !u!114 &1279358087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279358079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48038e8909725a42b5e1edd17358d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 625986330}
+  shield: {fileID: 1762451512}
+  credits: {fileID: 421215473}
+  damageTaken: 0
+  timer: 0
 --- !u!1 &1312628323
 GameObject:
   m_ObjectHideFlags: 0
@@ -4041,7 +4095,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1651469680}
   - component: {fileID: 1651469679}
-  - component: {fileID: 1651469678}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -4049,24 +4102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1651469678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651469677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 2116671174}
-  gameOver: {fileID: 428203506}
-  playerStats: {fileID: 580585111}
-  ambiance: {fileID: 1794743898}
-  engine: {fileID: 2101919869}
-  gg: {fileID: 428203508}
 --- !u!114 &1651469679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4079,10 +4114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a9e32353911e8499ea54923ba0d3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 625986330}
-  playerShield: {fileID: 1762451512}
-  playerCredits: {fileID: 421215473}
-  pCredits: 0
+  shield: 0
+  health: 0
+  credits: 0
   levelsComplete: 0
   waveComplete: 0
   isDead: 0
@@ -4096,6 +4130,9 @@ MonoBehaviour:
   rUpgrade1: 0
   rUpgrade2: 0
   rUpgrade3: 0
+  maxShield: 100
+  shieldPerSecond: 5
+  shieldTimerTillRegen: 30
   missileRange: 50
   missileDamage: 50
   missileLimit: 1
@@ -4478,53 +4515,6 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1794743897}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1926680466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1926680468}
-  - component: {fileID: 1926680467}
-  m_Layer: 0
-  m_Name: playerWin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1926680467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926680466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47b30d3abc5e964caaf55a11726c8e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  winUI: {fileID: 557946974}
-  pauseUI: {fileID: 2116671174}
-  gameOverUI: {fileID: 428203506}
-  playerStats: {fileID: 580585111}
---- !u!4 &1926680468
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926680466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 341.75824, y: 213.66757, z: -258.78247}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2036328214
 GameObject:
   m_ObjectHideFlags: 0

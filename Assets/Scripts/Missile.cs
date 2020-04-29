@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Missile : MonoBehaviour
 {
-
     public float Speed = 40;
     public int LookSpeed = 10;
     public float TimeTillTrack = 0;

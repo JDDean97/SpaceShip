@@ -795,49 +795,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1236178592}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &63985454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63985453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c678dea111fa674f8bb86ff4a35eabb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 205808668}
-  upgradeDialog: {fileID: 1325372834}
-  upgradeMenu: {fileID: 1352279577}
-  insufficientCredits: {fileID: 616475590}
-  playerHealth: {fileID: 1391799179}
-  playerShield: {fileID: 869800931}
-  ambiance: {fileID: 1579632707}
-  engine: {fileID: 36152532}
-  upgrade: {fileID: 1352279581}
-  purchaseSuccess: {fileID: 473260689}
-  purchaseFail: {fileID: 1942130880}
-  btnShield1: {fileID: 0}
-  btnShield2: {fileID: 0}
-  btnShield3: {fileID: 0}
-  btnLaser1: {fileID: 0}
-  btnLaser2: {fileID: 0}
-  btnLaser3: {fileID: 0}
-  btnRocket1: {fileID: 0}
-  btnRocket2: {fileID: 0}
-  btnRocket3: {fileID: 0}
-  btnExit: {fileID: 0}
-  btnOK: {fileID: 0}
-  shield1: 500
-  shield2: 2000
-  shield3: 5000
-  laser1: 500
-  laser2: 2000
-  laser3: 5000
-  rocket1: 500
-  rocket2: 2000
-  rocket3: 5000
 --- !u!135 &63985455
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4043,6 +4000,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: enemy
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: dae88cafdbc550147a462b319120ce88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae88cafdbc550147a462b319120ce88, type: 3}
 --- !u!1 &644682900
@@ -5479,7 +5441,6 @@ GameObject:
   m_Component:
   - component: {fileID: 913497085}
   - component: {fileID: 913497084}
-  - component: {fileID: 913497086}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -5499,10 +5460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a9e32353911e8499ea54923ba0d3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1391799180}
-  playerShield: {fileID: 869800932}
-  playerCredits: {fileID: 2143961589}
-  pCredits: 0
+  shield: 0
+  health: 0
+  credits: 0
   levelsComplete: 0
   waveComplete: 0
   isDead: 0
@@ -5516,6 +5476,9 @@ MonoBehaviour:
   rUpgrade1: 0
   rUpgrade2: 0
   rUpgrade3: 0
+  maxShield: 100
+  shieldPerSecond: 5
+  shieldTimerTillRegen: 30
   missileRange: 50
   missileDamage: 50
   missileLimit: 1
@@ -5535,24 +5498,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &913497086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913497083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 205808668}
-  gameOver: {fileID: 422167873}
-  playerStats: {fileID: 1266674372}
-  ambiance: {fileID: 1579632707}
-  engine: {fileID: 36152532}
-  gg: {fileID: 422167877}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -8412,7 +8357,9 @@ GameObject:
   - component: {fileID: 1730582502}
   - component: {fileID: 1730582501}
   - component: {fileID: 1730582500}
+  - component: {fileID: 1730582506}
   - component: {fileID: 1730582504}
+  - component: {fileID: 1730582505}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -8522,6 +8469,41 @@ MonoBehaviour:
   ambiance: {fileID: 1579632707}
   engine: {fileID: 36152532}
   pause: {fileID: 205808672}
+--- !u!114 &1730582505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730582499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 205808668}
+  gameOver: {fileID: 422167873}
+  playerStats: {fileID: 1266674372}
+  ambiance: {fileID: 1579632707}
+  engine: {fileID: 36152532}
+  gg: {fileID: 422167877}
+--- !u!114 &1730582506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730582499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48038e8909725a42b5e1edd17358d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1391799180}
+  shield: {fileID: 869800932}
+  credits: {fileID: 2143961589}
+  damageTaken: 0
+  timer: 0
 --- !u!1 &1798669838
 GameObject:
   m_ObjectHideFlags: 0

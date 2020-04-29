@@ -12,13 +12,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     //player stats UI
-    public Healthbar playerHealth;      //how to properly retrieve the downloaded healthbar asset for use
-    public Healthbar playerShield;
-    public TextMeshProUGUI playerCredits;
-    public int pCredits;
+    public float shield;
+    public float health;
+    public int credits;
+
     public int levelsComplete;
     public bool waveComplete;
-
     public bool isDead;
     public bool gameWon;
 
@@ -34,14 +33,14 @@ public class GameManager : MonoBehaviour
     public bool rUpgrade3;
 
     //values to upgrade
-    public int maxShield = 100;
-    public int shieldPerSecond = 5;
-    public float shieldTimerTillRegen = 30;
-    public int missileRange = 50;
-    public int missileDamage = 50;
-    public int missileLimit = 1;
-    public int laserRange = 50;
-    public int laserDamage = 50;
+    public int maxShield;
+    public int shieldPerSecond;
+    public int shieldTimerTillRegen;
+    public int missileRange;
+    public int missileDamage;
+    public int missileLimit;
+    public int laserRange;
+    public int laserDamage;
 
     private void Awake()
     {
@@ -49,6 +48,31 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(this);
             Instance = this;
+
+            //initialize player variables
+            shield = 50;
+            health = 50;
+            credits = 7500;
+            isDead = false;
+            gameWon = false;
+            levelsComplete = 0;
+            sUpgrade1 = false;
+            sUpgrade2 = false;
+            sUpgrade3 = false;
+            lUpgrade1 = false;
+            lUpgrade2 = false;
+            lUpgrade3 = false;
+            rUpgrade1 = false;
+            rUpgrade2 = false;
+            rUpgrade3 = false;
+            maxShield = 100;
+            shieldPerSecond = 5;
+            shieldTimerTillRegen = 10;
+            missileRange = 50;
+            missileDamage = 50;
+            missileLimit = 1;
+            laserRange = 50;
+            laserDamage = 50;
         }
         else if (Instance != this)
         {
@@ -61,28 +85,6 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        //initialize player variables
-        isDead = false;
-        gameWon = false;
-        sUpgrade1 = false;
-        sUpgrade2 = false;
-        sUpgrade3 = false;
-        lUpgrade1 = false;
-        lUpgrade2 = false;
-        lUpgrade3 = false;
-        rUpgrade1 = false;
-        rUpgrade2 = false;
-        rUpgrade3 = false;
-        playerHealth.health = 50;
-        playerShield.health = 50;
-        playerCredits.text = "22500";       //exact amount of credits to buy every upgrade
-        pCredits = Convert.ToInt32(playerCredits.text);
-        missileRange = 50;
-        missileDamage = 50;
-        missileLimit = 1;
-        laserRange = 50;
-        laserDamage = 50;
     }
 
     // Update is called once per frame
@@ -93,73 +95,48 @@ public class GameManager : MonoBehaviour
             gameWon = true;
         }
 
-        //regeneration
-        if (playerShield.health < playerShield.maximumHealth)
+        if (sUpgrade3 == true)
         {
-            playerShield.healthPerSecond = 20;
-            playerShield.ToggleRegeneration();
+            maxShield = 200;
+            shieldPerSecond = 10;
         }
-        else
+        else if (sUpgrade2 == true)
         {
-            if (playerHealth.health < playerHealth.maximumHealth)
-            {
-                playerHealth.healthPerSecond = 5;
-                playerHealth.ToggleRegeneration();
-            }
+            shieldTimerTillRegen = 5;
         }
-
-        //checking if player is dead
-        if (playerShield.health <= playerShield.minimumHealth)
-        {
-            playerShield.health = playerShield.minimumHealth;
-            if (playerHealth.health <= playerHealth.minimumHealth)
-            {
-                playerHealth.health = playerHealth.minimumHealth;
-                isDead = true;
-            }
-        }
-
-        if (sUpgrade1 == true)
+        else if (sUpgrade1 == true)
         {
             maxShield = 150;
         }
-        if (sUpgrade2 == true)
-        {
-            shieldTimerTillRegen = 15;
-        }
-        if (sUpgrade3 == true)
-        {
-            shieldPerSecond = 10;
-        }
 
-        if (lUpgrade1 == true)
-        {
-            laserRange = 100;
-        }
-        if (lUpgrade2 == true)
-        {
-            laserDamage = 100;
-        }
         if (lUpgrade3 == true)
         {
             laserRange = 200;
         }
+        else if (lUpgrade2 == true)
+        {
+            laserDamage = 100;
+        }
+        else if (lUpgrade1 == true)
+        {
+            laserRange = 100;
+        }
 
-        if (rUpgrade1 == true)
-        {
-            missileRange = 80;
-            missileDamage = 75;
-            missileLimit = 2;
-        }
-        if (rUpgrade2 == true)
-        {
-            missileRange = 100;
-            missileLimit = 3;
-        }
         if (rUpgrade3 == true)
         {
             missileRange = 150;
             missileDamage = 150;
+        }
+        else if (rUpgrade2 == true)
+        {
+            missileRange = 100;
+            missileLimit = 3;
+        }
+        else if (rUpgrade1 == true)
+        {
+            missileRange = 80;
+            missileDamage = 75;
+            missileLimit = 2;
         }
     }
 }

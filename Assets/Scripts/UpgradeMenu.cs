@@ -128,7 +128,7 @@ public class UpgradeMenu : MonoBehaviour
 
 	void Purchase(int amount)
 	{
-		if (GameManager.Instance.pCredits >= amount)
+		if (GameManager.Instance.credits >= amount)
 		{
 			purchaseSuccess.Play();
 
@@ -182,8 +182,7 @@ public class UpgradeMenu : MonoBehaviour
 				GameManager.Instance.rUpgrade3 = true;
 				btnRocket3.interactable = false;
 			}
-			GameManager.Instance.pCredits -= amount;
-			GameManager.Instance.playerCredits.text = GameManager.Instance.pCredits.ToString();
+			GameManager.Instance.credits -= amount;
 		}
 		else
 		{

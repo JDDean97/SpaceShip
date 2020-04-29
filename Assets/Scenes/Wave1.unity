@@ -2915,7 +2915,9 @@ GameObject:
   - component: {fileID: 1401713373}
   - component: {fileID: 1401713372}
   - component: {fileID: 1401713371}
+  - component: {fileID: 1401713376}
   - component: {fileID: 1401713370}
+  - component: {fileID: 1401713375}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3023,6 +3025,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1401713375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401713369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 57449113}
+  gameOver: {fileID: 22572597}
+  playerStats: {fileID: 1471534156}
+  ambiance: {fileID: 668003057}
+  engine: {fileID: 809311472}
+  gg: {fileID: 22572599}
+--- !u!114 &1401713376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401713369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48038e8909725a42b5e1edd17358d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 714770558}
+  shield: {fileID: 1887257139}
+  credits: {fileID: 343172286}
+  damageTaken: 0
+  timer: 0
 --- !u!1 &1455129337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3189,6 +3226,7 @@ GameObject:
   - component: {fileID: 1471534159}
   - component: {fileID: 1471534158}
   - component: {fileID: 1471534157}
+  - component: {fileID: 1471534160}
   m_Layer: 5
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -3254,6 +3292,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1471534160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471534156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48038e8909725a42b5e1edd17358d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 714770558}
+  shield: {fileID: 1887257139}
+  credits: {fileID: 343172286}
+  damageTaken: 0
+  timer: 0
 --- !u!1 &1556647231
 GameObject:
   m_ObjectHideFlags: 0
@@ -3264,7 +3319,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1556647234}
   - component: {fileID: 1556647233}
-  - component: {fileID: 1556647232}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -3272,24 +3326,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1556647232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556647231}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efabefeded19a284f9bb1305a1dad5fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 57449113}
-  gameOver: {fileID: 22572597}
-  playerStats: {fileID: 1471534156}
-  ambiance: {fileID: 668003057}
-  engine: {fileID: 809311472}
-  gg: {fileID: 22572599}
 --- !u!114 &1556647233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,10 +3338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a9e32353911e8499ea54923ba0d3ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 714770558}
-  playerShield: {fileID: 1887257139}
-  playerCredits: {fileID: 343172286}
-  pCredits: 0
+  shield: 0
+  health: 0
+  credits: 0
   levelsComplete: 0
   waveComplete: 0
   isDead: 0
@@ -3319,6 +3354,9 @@ MonoBehaviour:
   rUpgrade1: 0
   rUpgrade2: 0
   rUpgrade3: 0
+  maxShield: 100
+  shieldPerSecond: 5
+  shieldTimerTillRegen: 30
   missileRange: 50
   missileDamage: 50
   missileLimit: 1
