@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
     public bool rUpgrade3;
 
     //values to upgrade
+    public int maxShield = 100;
+    public int shieldPerSecond = 5;
+    public float shieldTimerTillRegen = 30;
     public int missileRange = 50;
     public int missileDamage = 50;
     public int missileLimit = 1;
@@ -85,6 +88,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(levelsComplete == 4)
+        {
+            gameWon = true;
+        }
+
         //regeneration
         if (playerShield.health < playerShield.maximumHealth)
         {
@@ -111,11 +119,47 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (sUpgrade1 == true)
+        {
+            maxShield = 150;
+        }
+        if (sUpgrade2 == true)
+        {
+            shieldTimerTillRegen = 15;
+        }
+        if (sUpgrade3 == true)
+        {
+            shieldPerSecond = 10;
+        }
+
+        if (lUpgrade1 == true)
+        {
+            laserRange = 100;
+        }
+        if (lUpgrade2 == true)
+        {
+            laserDamage = 100;
+        }
+        if (lUpgrade3 == true)
+        {
+            laserRange = 200;
+        }
+
         if (rUpgrade1 == true)
         {
             missileRange = 80;
             missileDamage = 75;
             missileLimit = 2;
+        }
+        if (rUpgrade2 == true)
+        {
+            missileRange = 100;
+            missileLimit = 3;
+        }
+        if (rUpgrade3 == true)
+        {
+            missileRange = 150;
+            missileDamage = 150;
         }
     }
 }
