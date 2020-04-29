@@ -15,6 +15,7 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         health = 100;
     }
+
     public void TakeDamage(int amount)
     {
         health = health - amount;

@@ -135,6 +135,20 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void damagePlayer(int amount)
+    {
+        if (shield.health > shield.minimumHealth)
+        {
+            shield.health -= amount;
+            damageTaken = true;
+        }
+        else
+        {
+            health.health -= amount;
+            damageTaken = true;
+        }
+    }
+
     IEnumerator shieldRegen()
     {
         yield return new WaitForSeconds(timer);
