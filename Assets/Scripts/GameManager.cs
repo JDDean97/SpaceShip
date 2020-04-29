@@ -50,8 +50,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
             //initialize player variables
-            shield = 50;
-            health = 50;
+            shield = 100;
+            health = 100;
             credits = 7500;
             isDead = false;
             gameWon = false;
