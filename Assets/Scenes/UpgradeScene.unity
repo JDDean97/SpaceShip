@@ -5478,14 +5478,14 @@ MonoBehaviour:
   rUpgrade1: 0
   rUpgrade2: 0
   rUpgrade3: 0
-  maxShield: 100
-  shieldPerSecond: 5
-  shieldTimerTillRegen: 30
-  missileRange: 50
-  missileDamage: 50
-  missileLimit: 1
-  laserRange: 50
-  laserDamage: 50
+  maxShield: 0
+  shieldPerSecond: 0
+  shieldTimerTillRegen: 0
+  missileRange: 0
+  missileDamage: 0
+  missileLimit: 0
+  laserRange: 0
+  laserDamage: 0
 --- !u!4 &913497085
 Transform:
   m_ObjectHideFlags: 0

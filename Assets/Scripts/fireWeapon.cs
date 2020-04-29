@@ -54,12 +54,6 @@ public class fireWeapon : MonoBehaviour
             Debug.Log("Two");
             FireMissiles();
         }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-
-            laser.enabled = false;
-        }
     }
 
     void FireLasers()
@@ -95,7 +89,7 @@ public class fireWeapon : MonoBehaviour
         laser.SetPosition(1, laserCrosshair.transform.position);
         laserFire.Play();
         laser.enabled = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         laser.enabled = false;
         StopCoroutine("laserFlash");
     }
