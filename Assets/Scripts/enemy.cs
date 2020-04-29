@@ -15,17 +15,20 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         health = 100;
     }
-    public void TakeDamage(int amount) {
+    public void TakeDamage(int amount)
+    {
         health = health - amount;
-       
-        if (health <= 0) {
+
+        if (health <= 0)
+        {
             //player dies
             Die();
-           
+
         }
     }
 
-    void Die() {
+    void Die()
+    {
         Destroy(gameObject);
     }
 

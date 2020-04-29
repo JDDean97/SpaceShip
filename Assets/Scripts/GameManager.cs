@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
         {
             missileRange = 150;
             missileDamage = 150;
+            missileLimit = 3;
         }
         else if (rUpgrade2 == true)
         {
