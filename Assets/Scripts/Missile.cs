@@ -20,6 +20,7 @@ public class Missile : MonoBehaviour
 
     void Start()
     {
+        Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>());
         //Find the target object
         FoundTargetObject = FindClosestEnemy();
         if (FoundTargetObject != null)

@@ -6,7 +6,7 @@ public class fireWeapon : MonoBehaviour
 {
     public LineRenderer laser;
     public GameObject ship;
-    int laserDamage = 50;
+    int laserDamage = 100;
     public GameObject TargetPos;
     public GameObject missile;
     public int MissileLimit = 1;
@@ -22,13 +22,17 @@ public class fireWeapon : MonoBehaviour
         MissileLimit = GameManager.Instance.missileLimit;
         missileRange = GameManager.Instance.missileRange;
         laserRange = GameManager.Instance.laserRange;
+        ship = gameObject;
+        laser = transform.Find("Line").GetComponent<LineRenderer>();
         laser.enabled = false;
+        laser.useWorldSpace = true;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        laser.SetPosition(0, ship.transform.position);
+        
         //pulling values from Gamemanager
         MissileLimit = GameManager.Instance.missileLimit;
         missileRange = GameManager.Instance.missileRange;
@@ -41,20 +45,18 @@ public class fireWeapon : MonoBehaviour
         //make a list of all the missiles in the scene
         Missiles = GameObject.FindGameObjectsWithTag("Missile");
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            Debug.Log("One");
+            //Debug.Log("One");
             FireLasers();
-        }
+        }       
         else if (Input.GetButtonDown("Fire2"))
         {
-            Debug.Log("Two");
+            //Debug.Log("Two");
             FireMissiles();
         }
-
-        if (Input.GetButtonUp("Fire1"))
+        else
         {
-
             laser.enabled = false;
         }
     }
@@ -70,8 +72,11 @@ public class fireWeapon : MonoBehaviour
             enemy enemyhit = hit.transform.GetComponent<enemy>();
             if (enemyhit != null)
             {
-                enemyhit.TakeDamage(laserDamage);
-                laser.SetPosition(1, hit.transform.position);
+                Debug.Log(Mathf.RoundToInt(laserDamage * Time.deltaTime));
+                enemyhit.TakeDamage(Mathf.RoundToInt(laserDamage * Time.deltaTime));
+                Vector3 dir = hit.point - transform.position;
+                laser.SetPosition(0, transform.position);
+                laser.SetPosition(1, transform.position + dir);
                 laser.enabled = true;
             }
             else
