@@ -40,9 +40,24 @@ public class Portal : MonoBehaviour
             GameObject[] allEnemies;
             allEnemies = GameObject.FindGameObjectsWithTag("enemy");
 
-            if (allEnemies.Length == 0)
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Wave1") && allEnemies.Length == 0)
             {
-                GameManager.Instance.levelsComplete += 1;
+                GameManager.Instance.levelsComplete = 1;
+                SceneManager.LoadSceneAsync("Upgrade");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Wave2") && allEnemies.Length == 0)
+            {
+                GameManager.Instance.levelsComplete = 2;
+                SceneManager.LoadSceneAsync("Upgrade");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Wave3") && allEnemies.Length == 0)
+            {
+                GameManager.Instance.levelsComplete = 3;
+                SceneManager.LoadSceneAsync("Upgrade");
+            }
+            else if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Boss") && allEnemies.Length == 0)
+            {
+                GameManager.Instance.levelsComplete = 4;
                 SceneManager.LoadSceneAsync("Upgrade");
             }
         }

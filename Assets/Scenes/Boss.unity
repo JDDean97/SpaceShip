@@ -2078,7 +2078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f824a6889c7a7f048a53945eb9ba0de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10000
+  health: 5000
   explosion: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
 --- !u!4 &642677293 stripped
 Transform:
