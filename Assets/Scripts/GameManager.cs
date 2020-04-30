@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             rUpgrade2 = false;
             rUpgrade3 = false;
             shieldPerSecond = 5;
-            shieldTimerTillRegen = 10;
+            shieldTimerTillRegen = 15;
             missileRange = 50;
             missileDamage = 50;
             missileLimit = 1;
