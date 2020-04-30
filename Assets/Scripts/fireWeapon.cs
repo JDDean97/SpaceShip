@@ -28,7 +28,6 @@ public class fireWeapon : MonoBehaviour
         laser = transform.Find("Line").GetComponent<LineRenderer>();
         laser.enabled = false;
         laser.useWorldSpace = true;
-
     }
 
     // Update is called once per frame
