@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d85ac0982180d0c4a81c753c0ac68c06
   - enabled: 1
-    path: Assets/Scenes/UpgradeScene.unity
+    path: Assets/Scenes/Upgrade.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Wave1.unity

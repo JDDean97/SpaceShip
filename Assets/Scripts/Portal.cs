@@ -20,7 +20,7 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("UpgradeScene"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Upgrade"))
         {
             if (levelsComplete == 0) {
                 SceneManager.LoadSceneAsync("Wave1");
@@ -39,7 +39,7 @@ public class Portal : MonoBehaviour
         {
             if(GameManager.Instance.waveComplete)
             {
-                SceneManager.LoadSceneAsync("UpgradeScene");
+                SceneManager.LoadSceneAsync("Upgrade");
             }
         }
     }
