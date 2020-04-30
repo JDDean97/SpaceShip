@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public int credits;
 
     public int levelsComplete;
-    public bool waveComplete;
     public bool isDead;
     public bool gameWon;
 
