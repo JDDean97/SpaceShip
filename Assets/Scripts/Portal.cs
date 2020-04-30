@@ -37,8 +37,12 @@ public class Portal : MonoBehaviour
         }
         else
         {
-            if(GameManager.Instance.waveComplete)
+            GameObject[] allEnemies;
+            allEnemies = GameObject.FindObjectsWithTag("enemy");
+
+            if (allEnemies.Length == 0)
             {
+                GameManager.Instance.levelsComplete += 1;
                 SceneManager.LoadSceneAsync("Upgrade");
             }
         }
