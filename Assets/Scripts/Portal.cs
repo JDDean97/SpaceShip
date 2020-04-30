@@ -20,7 +20,7 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("UpgradeScene"))
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Upgrade"))
         {
             if (levelsComplete == 0) {
                 SceneManager.LoadSceneAsync("Wave1");
@@ -37,9 +37,13 @@ public class Portal : MonoBehaviour
         }
         else
         {
-            if(GameManager.Instance.waveComplete)
+            GameObject[] allEnemies;
+            allEnemies = GameObject.FindGameObjectsWithTag("enemy");
+
+            if (allEnemies.Length == 0)
             {
-                SceneManager.LoadSceneAsync("UpgradeScene");
+                GameManager.Instance.levelsComplete += 1;
+                SceneManager.LoadSceneAsync("Upgrade");
             }
         }
     }

@@ -6,6 +6,9 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
+    public AudioSource playerHit;
+    public AudioClip shieldHit;
+    public AudioClip healthHit;
     public Healthbar health;      //how to properly retrieve the downloaded healthbar asset for use
     public Healthbar shield;
     public TextMeshProUGUI credits;
@@ -15,7 +18,6 @@ public class PlayerStats : MonoBehaviour
 
     void Awake()
     {
-        damageTaken = true;
         shield.health = GameManager.Instance.shield;
         shield.maximumHealth = 200;
         health.health = GameManager.Instance.health;
@@ -54,6 +56,7 @@ public class PlayerStats : MonoBehaviour
                 {
                     health.healthPerSecond = 5;
                     health.regenerateHealth = true;
+                    GameManager.Instance.health = health.health;
                 }
                 else
                 {
@@ -85,6 +88,7 @@ public class PlayerStats : MonoBehaviour
                 {
                     health.healthPerSecond = 5;
                     health.regenerateHealth = true;
+                    GameManager.Instance.health = health.health;
                 }
                 else
                 {
@@ -116,6 +120,7 @@ public class PlayerStats : MonoBehaviour
                 {
                     health.healthPerSecond = 5;
                     health.regenerateHealth = true;
+                    GameManager.Instance.health = health.health;
                 }
                 else
                 {
@@ -138,15 +143,25 @@ public class PlayerStats : MonoBehaviour
 
     public void hurt(float damage)
     {
-        if(shield.health > shield.minimumHealth)
+        if (shield.health > shield.minimumHealth)
         {
             shield.health -= damage;
             damageTaken = true;
+            playerHit.clip = shieldHit;
+            if (!playerHit.isPlaying)
+            {
+                playerHit.PlayOneShot(playerHit.clip, 1.15f);
+            }
         }
         else
         {
             health.health -= damage;
             damageTaken = true;
+            playerHit.clip = healthHit;
+            if (!playerHit.isPlaying)
+            {
+                playerHit.PlayOneShot(playerHit.clip, 0.65f);
+            }
         }
         health.UpdateHealth();
         shield.UpdateHealth();
@@ -155,7 +170,6 @@ public class PlayerStats : MonoBehaviour
     IEnumerator shieldRegen()
     {
         yield return new WaitForSeconds(timer);
-
         damageTaken = false;
 
         StopCoroutine("shieldRegen");

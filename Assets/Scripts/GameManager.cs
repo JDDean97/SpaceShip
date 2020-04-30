@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     public bool rUpgrade3;
 
     //values to upgrade
-    public int maxShield;
     public int shieldPerSecond;
     public int shieldTimerTillRegen;
     public int missileRange;
@@ -50,9 +49,9 @@ public class GameManager : MonoBehaviour
             Instance = this;
 
             //initialize player variables
-            shield = 50;
-            health = 50;
-            credits = 7500;
+            shield = 100;
+            health = 100;
+            credits = 250;
             isDead = false;
             gameWon = false;
             levelsComplete = 0;
@@ -65,9 +64,8 @@ public class GameManager : MonoBehaviour
             rUpgrade1 = false;
             rUpgrade2 = false;
             rUpgrade3 = false;
-            maxShield = 100;
             shieldPerSecond = 5;
-            shieldTimerTillRegen = 10;
+            shieldTimerTillRegen = 15;
             missileRange = 50;
             missileDamage = 50;
             missileLimit = 1;
@@ -97,16 +95,11 @@ public class GameManager : MonoBehaviour
 
         if (sUpgrade3 == true)
         {
-            maxShield = 200;
             shieldPerSecond = 10;
         }
         else if (sUpgrade2 == true)
         {
             shieldTimerTillRegen = 5;
-        }
-        else if (sUpgrade1 == true)
-        {
-            maxShield = 150;
         }
 
         if (lUpgrade3 == true)
@@ -126,6 +119,7 @@ public class GameManager : MonoBehaviour
         {
             missileRange = 150;
             missileDamage = 150;
+            missileLimit = 3;
         }
         else if (rUpgrade2 == true)
         {

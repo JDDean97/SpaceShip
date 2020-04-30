@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class fireWeapon : MonoBehaviour
 {
+    public AudioSource laserFire;
+    public GameObject laserCrosshair;
     public LineRenderer laser;
     public GameObject ship;
     int laserDamage = 100;
@@ -37,6 +39,7 @@ public class fireWeapon : MonoBehaviour
         MissileLimit = GameManager.Instance.missileLimit;
         missileRange = GameManager.Instance.missileRange;
         laserRange = GameManager.Instance.laserRange;
+        laserCrosshair.transform.localPosition = new Vector3(0f, 0f, laserRange);
 
         Missiles = GameObject.FindGameObjectsWithTag("Missile");
         //find the length of the list of missiles
@@ -55,35 +58,22 @@ public class fireWeapon : MonoBehaviour
             //Debug.Log("Two");
             FireMissiles();
         }
-        else
-        {
-            laser.enabled = false;
-        }
     }
 
     void FireLasers()
     {
-        float range = 100f;
+        StartCoroutine("laserFlash");
         RaycastHit hit;
-        if (Physics.Raycast(ship.transform.position, ship.transform.forward, out hit, range))
-        {
 
+        if (Physics.Raycast(ship.transform.position, ship.transform.forward, out hit, laserRange))
+        {
             //hit.transform is the object you hit
             enemy enemyhit = hit.transform.GetComponent<enemy>();
             if (enemyhit != null)
             {
-                Debug.Log(Mathf.RoundToInt(laserDamage * Time.deltaTime));
-                enemyhit.TakeDamage(Mathf.RoundToInt(laserDamage * Time.deltaTime));
-                Vector3 dir = hit.point - transform.position;
-                laser.SetPosition(0, transform.position);
-                laser.SetPosition(1, transform.position + dir);
-                laser.enabled = true;
+                enemyhit.TakeDamage(laserDamage);
+                laser.SetPosition(1, hit.transform.position);
             }
-            else
-            {
-                laser.enabled = false;
-            }
-
         }
     }
 
@@ -96,5 +86,15 @@ public class fireWeapon : MonoBehaviour
             Instantiate(missile, ship.transform.position, ship.transform.rotation);
             Debug.Log("Missile fired");
         }
+    }
+
+    IEnumerator laserFlash()
+    {
+        laser.SetPosition(1, laserCrosshair.transform.position);
+        laserFire.Play();
+        laser.enabled = true;
+        yield return new WaitForSeconds(0.25f);
+        laser.enabled = false;
+        StopCoroutine("laserFlash");
     }
 }

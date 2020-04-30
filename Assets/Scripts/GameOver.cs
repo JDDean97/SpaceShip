@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 
 public class GameOver : MonoBehaviour
 {
+    public GameObject lasers;
+
     public GameObject pauseMenu;
     public GameObject gameOver;
     public GameObject playerStats;
@@ -37,6 +39,7 @@ public class GameOver : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        lasers.SetActive(false);
         Time.timeScale = 0f;
         gameOver.SetActive(true);
         pauseMenu.SetActive(false);

@@ -28,12 +28,14 @@ public class Missile : MonoBehaviour
             Target = FoundTargetObject.transform.position;
         }
 
+        TimeTillExpire = 5;
     }
 
     void Update()
     {
         //pulling values from Gamemanager
         missileDamage = GameManager.Instance.missileDamage;
+        DistanceTillStopLooking = GameManager.Instance.missileRange;
 
         //Find the closest target object
         FoundTargetObject = FindClosestEnemy();

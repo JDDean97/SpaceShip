@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 69914706704223654}
   - component: {fileID: 1831197953306647029}
   - component: {fileID: 6281408526255731146}
-  - component: {fileID: 8981843530702435872}
+  - component: {fileID: 5568531678834355529}
   m_Layer: 0
   m_Name: ship_ThirdOrder
   m_TagString: enemy
@@ -145,7 +145,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8981843530702435872
+--- !u!114 &5568531678834355529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d497b8bba4154b9154d917c6231a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 50
   explosion: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
 --- !u!1 &7438621135660463237
 GameObject:

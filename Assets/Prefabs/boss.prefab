@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81ecb79bfba0694ab1de079971849af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 500
   explosion: {fileID: 100002, guid: f7efb0d9df2264096af57128df85dddb, type: 3}
   minion: {fileID: 3937055193374965685, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}

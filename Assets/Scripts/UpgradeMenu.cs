@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 
 public class UpgradeMenu : MonoBehaviour
 {
+	public GameObject lasers;
+
 	//reference to pause menu
 	public GameObject pauseMenu;
 
@@ -69,6 +71,7 @@ public class UpgradeMenu : MonoBehaviour
 				//make cursor visible
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
+				lasers.SetActive(false);
 				upgradeDialog.SetActive(false);
 				playerHealth.SetActive(false);
 				playerShield.SetActive(false);
@@ -98,6 +101,7 @@ public class UpgradeMenu : MonoBehaviour
 	{
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
+		lasers.SetActive(true);
 		upgrade.Pause();
 		upgradeMenu.SetActive(false);
 		playerHealth.SetActive(true);
