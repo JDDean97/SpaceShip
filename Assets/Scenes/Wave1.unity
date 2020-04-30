@@ -760,6 +760,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship_ThirdOrder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
 --- !u!1 &164246373
@@ -3805,6 +3810,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship_ThirdOrder
       objectReference: {fileID: 0}
+    - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
 --- !u!1 &1401713369
@@ -4191,6 +4201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ship_ThirdOrder (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
 --- !u!4 &1469031397 stripped
@@ -4335,7 +4350,6 @@ MonoBehaviour:
   health: 0
   credits: 0
   levelsComplete: 0
-  waveComplete: 0
   isDead: 0
   gameWon: 0
   sUpgrade1: 0
@@ -5383,6 +5397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ship_ThirdOrder (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
+        type: 3}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}

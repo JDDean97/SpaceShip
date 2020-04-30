@@ -14,7 +14,7 @@ public class enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
-        health = 100;
+        //health = 100;
     }
     public void TakeDamage(int amount)
     {
