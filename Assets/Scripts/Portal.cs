@@ -38,7 +38,7 @@ public class Portal : MonoBehaviour
         else
         {
             GameObject[] allEnemies;
-            allEnemies = GameObject.FindObjectsWithTag("enemy");
+            allEnemies = GameObject.FindGameObjectsWithTag("enemy");
 
             if (allEnemies.Length == 0)
             {
