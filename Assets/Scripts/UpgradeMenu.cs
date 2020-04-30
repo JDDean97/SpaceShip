@@ -128,6 +128,51 @@ public class UpgradeMenu : MonoBehaviour
 			upgradeDialog.SetActive(false);
 			upgradeMenu.SetActive(false);
 		}
+
+		if (GameManager.Instance.sUpgrade1)
+        {
+			btnShield1.interactable = false;
+        }
+
+		if (GameManager.Instance.sUpgrade2)
+		{
+			btnShield2.interactable = false;
+		}
+
+		if (GameManager.Instance.sUpgrade3)
+		{
+			btnShield3.interactable = false;
+		}
+
+		if (GameManager.Instance.lUpgrade1)
+		{
+			btnLaser1.interactable = false;
+		}
+
+		if (GameManager.Instance.lUpgrade2)
+		{
+			btnLaser2.interactable = false;
+		}
+
+		if (GameManager.Instance.lUpgrade3)
+		{
+			btnLaser3.interactable = false;
+		}
+
+		if (GameManager.Instance.rUpgrade1)
+		{
+			btnRocket1.interactable = false;
+		}
+
+		if (GameManager.Instance.rUpgrade2)
+		{
+			btnRocket2.interactable = false;
+		}
+
+		if (GameManager.Instance.rUpgrade3)
+		{
+			btnRocket3.interactable = false;
+		}
 	}
 
 	void Purchase(int amount)

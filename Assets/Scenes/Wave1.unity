@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: e0e0125b5148ca84fb8a0ee339d80ee1, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 96f6078161b641b41aaff589af0e59ad, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -763,7 +763,7 @@ PrefabInstance:
     - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
@@ -3813,7 +3813,7 @@ PrefabInstance:
     - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
@@ -4204,7 +4204,7 @@ PrefabInstance:
     - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}
@@ -5401,7 +5401,7 @@ PrefabInstance:
     - target: {fileID: 5568531678834355529, guid: f68715b95b3a1e441a9559a9a49ceea4,
         type: 3}
       propertyPath: health
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68715b95b3a1e441a9559a9a49ceea4, type: 3}

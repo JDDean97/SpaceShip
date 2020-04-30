@@ -16,17 +16,6 @@ public class Portal : MonoBehaviour
     void Update()
     {
         levelsComplete = GameManager.Instance.levelsComplete;
-
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Boss"))
-        {
-            GameObject[] allEnemies;
-            allEnemies = GameObject.FindGameObjectsWithTag("enemy");
-
-            if (allEnemies.Length == 0)
-            {
-                GameManager.Instance.levelsComplete += 1;
-            }
-        }
     }
 
     void OnTriggerEnter(Collider other)

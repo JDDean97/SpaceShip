@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             //initialize player variables
             shield = 100;
             health = 100;
-            credits = 250;
+            credits =1000;
             isDead = false;
             gameWon = false;
             levelsComplete = 0;

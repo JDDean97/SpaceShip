@@ -31,7 +31,7 @@ public class enemy : MonoBehaviour
         GameObject ex = Instantiate(explosion, transform.position, transform.rotation);
         ex.transform.Find("Particle System").GetComponent<ParticleSystem>().startSize = 10;
         Destroy(gameObject);
-        GameManager.Instance.credits += 250;
+        GameManager.Instance.credits += 500;
     }
 
     private void FixedUpdate()
