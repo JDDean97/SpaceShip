@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     void turn()
     {
-        float sensitivity = 15;
+        float sensitivity = 15;     //use 5 when building
 		//set roll equal to horizontal mouse movement and multiply it by sensitivity
         float roll = -Input.GetAxis("Mouse X") * sensitivity;
 		//set roll equal to vertical mouse movement and multiply it by sensitivity
