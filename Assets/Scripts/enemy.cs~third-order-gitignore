@@ -16,18 +16,22 @@ public class enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         health = 100;
     }
-    public void TakeDamage(int amount) {
-        health -= amount;     
-        if (health <= 0) {
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
             //enemy dies
-            Die();        
+            Die();
         }
     }
 
-    void Die() {
+    void Die()
+    {
         GameObject ex = Instantiate(explosion, transform.position, transform.rotation);
         ex.transform.Find("Particle System").GetComponent<ParticleSystem>().startSize = 10;
         Destroy(gameObject);
+        GameManager.Instance.credits += 250;
     }
 
     private void FixedUpdate()
@@ -55,11 +59,11 @@ public class enemy : MonoBehaviour
         laser.useWorldSpace = enabled;
         int range = 20;
         RaycastHit hit;
-        if(Physics.Raycast(transform.position,transform.forward,out hit,range))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, range))
         {
             Debug.DrawRay(transform.position, hit.point - transform.position, Color.red);
-            if(hit.transform.GetComponent<Player>())
-            {                
+            if (hit.transform.GetComponent<Player>())
+            {
                 Vector3 dir = hit.point - transform.position;
                 Debug.DrawRay(transform.position, dir, Color.green);
                 laser.SetPosition(0, transform.position);
